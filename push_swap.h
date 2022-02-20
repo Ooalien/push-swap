@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/14 20:15:10 by abayar           ###   ########.fr       */
+/*   Updated: 2022/02/20 23:40:05 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_list
 {
 	int				i;
+	int				index;
 	struct s_list	*next;
 }	t_list;
 
@@ -27,6 +28,11 @@ void	ft_lstadd_front(t_list **alst, int data);
 t_list	*ft_lstlast(t_list **head, t_list *lst);
 t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list **head, t_list *lst);
-int	ft_atoi(const char *str);
+void    swap_a(t_list **head, t_list *l);
+int		ft_atoi(const char *str);
+void	mark_index(t_list **head, t_list *l);
+void	push_b(t_list **head, t_list **head2, t_list *l);
+void	printlst(t_list **head, t_list *l);
+void	dellst(t_list *l);
 
 #endif
