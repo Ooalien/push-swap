@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:58:33 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/20 23:39:48 by abayar           ###   ########.fr       */
+/*   Updated: 2022/02/27 21:22:31 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int content)
 	if (!l)
 		return (NULL);
 	l->i = content;
+	l->index = 0;
 	l->next = l;
 	return (l);
 }
@@ -64,12 +65,12 @@ void	ft_lstadd_back(t_list **alst, int data)
 	new->next = *alst;
 }
 
-void	ft_lstadd_front(t_list **alst, int data)
+void	ft_lstadd_front(t_list **alst, int data, int index)
 {
 	t_list	*temp;
 	t_list	*new = ft_lstnew(data);
 	
-	//temp = *alst;
+	new->index = index;
 	if (!(*alst))
 	{
 		*alst = new;
@@ -87,6 +88,24 @@ void	ft_lstadd_front(t_list **alst, int data)
 
 void	dellst(t_list *l)
 {
+	int	i;
+	t_list	*temp;
+
+	i = l->i;
+	l = temp;
+	while (l->next->i != i)
+	{
+		l = l->next;
+	}
+	if (l->next->i != l->i)
+		l->next = l->next->next;
+	else
+	{
+		//l->i = NULL;
+		l = NULL;
+		free(l);
+	}
+	temp = NULL;
+	free(temp);
 	//l->i = NULL;
-	free(l);
 }
