@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 23:03:48 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/28 16:45:35 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/01 19:26:37 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,14 @@ void	rretate_b(t_list **head)
 {
 	*head = ft_lstlast(head, *head);
 	write(1, "rrb\n", 4);
+}
+
+void	retate(t_list **head)
+{
+	*head = (*head)->next;
+}
+
+void	rretate(t_list **head)
+{
+	*head = ft_lstlast(head, *head);
 }

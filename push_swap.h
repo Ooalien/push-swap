@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/28 20:27:43 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/04 16:51:41 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_list
 {
 	int				i;
 	int				index;
+	int				moves;
 	struct s_list	*next;
 }	t_list;
 
@@ -45,13 +46,18 @@ void	retate_a(t_list **head);
 void	rretate_a(t_list **head);
 void	retate_b(t_list **head);
 void	rretate_b(t_list **head);
+void	retate(t_list **head);
+void	rretate(t_list **head);
 void	printlst(t_list **head, t_list *l);
 void	dellst(t_list *l);
 void    indexing(t_list **head);
 int		count(t_list *l2, int i);
 void	get_first_step(t_list **head, t_list **head2, int ac);
-node	*small_to_top(t_list **head);
-node	*big_to_top(t_list **head);
-char	scan_moves(node *s, node *b);
+// node	*small_to_top(t_list **head);
+// node	*big_to_top(t_list **head);
+int		scan_moves(t_list **head, int index);
+void	calc_move(t_list **head);
+void	sorting(node *s, node *b, t_list **head, t_list **head2);
+int		select_pair(t_list **head, int index);
 
 #endif

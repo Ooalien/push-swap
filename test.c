@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:16:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/28 18:12:06 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/04 16:51:33 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	printlst(t_list **head, t_list *l)
 		return ;
 	while(l->next != *head)
 	{
-		printf("%d\n", l->i);
+		printf("%d    index = %d\n", l->i, l->index);
 		l = l->next;
 	}
-	printf("%d\n", l->i);
+	printf("%d    index = %d\n", l->i, l->index);
 }
 
 int	main(int ac, char **av)
@@ -83,11 +83,21 @@ int	main(int ac, char **av)
 		//printf("last node; %d\n", ft_lstlast(&head2,head2)->i);
 		printf("*********l1*********\n");
 		printlst(&head, head);
-		printf("********* check *********\n");
-		s = small_to_top(&head2);
-		printf("********* check *********\n");
-		b = big_to_top(&head2);
-		scan_moves(s, b);
+		// printf("********* check *********\n");
+		//s = small_to_top(&head2);
+		// printf("********* check *********\n");
+		//b = big_to_top(&head2);
+		//scan_moves(s, b);
+		//sorting(s,b,&head,&head2);
+		printf("**********%d********\n", scan_moves(&head2, 1));
+		// printlst(&head2, head2);
+		calc_move(&head2);
+		printf("5 moves = %d  ||   next to 5 moves = %d\n", scan_moves(&head2, 5), select_pair(&head,5));
+
+		// printf("last move = %d\n", scan_moves(&head2, 2));
+		// printf("last move = %d\n", scan_moves(&head2, 3));
+		//  printf("*********l1*********\n");
+		//  printlst(&head, head);
 		// while(&(*head2)->next != head2)
 		// {
 		// 	printf("%d\n", (*head2)->i);

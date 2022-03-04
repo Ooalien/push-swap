@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:58:33 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/27 21:22:31 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/02 17:28:41 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	l->i = content;
 	l->index = 0;
+	l->moves = 0;
 	l->next = l;
 	return (l);
 }
