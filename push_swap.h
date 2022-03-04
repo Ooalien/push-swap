@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/04 16:51:41 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/04 20:51:08 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_list
 {
 	int				i;
 	int				index;
+	int				sum;
+	int				pos;
 	int				moves;
 	struct s_list	*next;
 }	t_list;
@@ -59,5 +61,8 @@ int		scan_moves(t_list **head, int index);
 void	calc_move(t_list **head);
 void	sorting(node *s, node *b, t_list **head, t_list **head2);
 int		select_pair(t_list **head, int index);
+int		pick_move(t_list **head, t_list **head2);
+void	final_step(t_list **head, t_list **head2);
+void	pos_list(t_list **head);
 
 #endif

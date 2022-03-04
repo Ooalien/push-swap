@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:16:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/04 16:51:33 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/04 21:03:59 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	printlst(t_list **head, t_list *l)
 		return ;
 	while(l->next != *head)
 	{
-		printf("%d    index = %d\n", l->i, l->index);
+		printf("%d    index = %d   sum = %d\n", l->i, l->index, l->sum);
 		l = l->next;
 	}
-	printf("%d    index = %d\n", l->i, l->index);
+	printf("%d    index = %d   sum = %d\n", l->i, l->index, l->sum);
 }
 
 int	main(int ac, char **av)
@@ -92,8 +92,18 @@ int	main(int ac, char **av)
 		printf("**********%d********\n", scan_moves(&head2, 1));
 		// printlst(&head2, head2);
 		calc_move(&head2);
-		printf("5 moves = %d  ||   next to 5 moves = %d\n", scan_moves(&head2, 5), select_pair(&head,5));
-
+		//printf("5 moves = %d  ||   next to 5 moves = %d\n", scan_moves(&head2, 5), select_pair(&head,5));
+		pick_move(&head, &head2);
+		printlst(&head2, head2);
+		final_step(&head,&head2);
+		final_step(&head,&head2);
+		final_step(&head,&head2);
+		final_step(&head,&head2);
+		final_step(&head,&head2);
+		printf("*********l1*********\n");
+		printlst(&head, head);
+		printf("**********l2********\n");
+		printlst(&head2, head2);
 		// printf("last move = %d\n", scan_moves(&head2, 2));
 		// printf("last move = %d\n", scan_moves(&head2, 3));
 		//  printf("*********l1*********\n");

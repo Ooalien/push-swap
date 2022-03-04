@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:10:21 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/04 16:51:04 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/04 21:09:17 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,6 +298,7 @@ int	select_pair(t_list **head, int index)
 
 	i = 0;
 	l = *head;
+	pos_list(head);
 	while (l->next != *head)
 	{
 		if(l->index == (index + 1))
@@ -305,4 +306,87 @@ int	select_pair(t_list **head, int index)
 		l = l->next;
 	}
 	return(scan_moves(head, l->index));
+}
+
+void	pos_list(t_list **head)
+{
+	t_list *l;
+	int		i;
+
+	i = 1;
+	l = *head;
+	while (l->next != *head)
+	{
+		l->pos = i;
+		i++;
+		l = l->next;
+	}
+	l->pos = i;
+}
+
+int	pick_move(t_list **head, t_list **head2)
+{
+	t_list	*l;
+	int		r;
+	
+	l = *head2;
+	r = ft_lstsize(head2, *head2);
+	pos_list(head2);
+	while (l->next != *head2)
+	{
+		l->sum = scan_moves(head2, l->index) + select_pair(head, l->index);
+		l = l->next;
+	}
+	l->sum = scan_moves(head, l->index) + select_pair(head2, l->index);
+	l = l->next;
+	while (l->next != *head2)
+	{
+		if (l->sum < r)
+			r = l->pos;
+		l = l->next;
+	}
+	return (r);
+}
+
+void	final_step(t_list **head, t_list **head2)
+{
+	int move;
+	 
+	move = pick_move(head, head2);
+	while (1)
+	{
+		if (move <= ((ft_lstsize(head2, *head2) / 2) + 1))
+		{
+			if((*head2)->pos == move)
+				break ;
+			retate_b(head2);
+			//continue ;
+		}
+		else
+		{
+			if((*head2)->pos == move)
+				break ;
+			rretate_b(head2);
+		}
+	}
+	// move = scan_moves(head, );
+	// printf("select pair = %d\n", move);
+	// while (1)
+	// {
+	// 	if (move <= ((ft_lstsize(head, *head) / 2) + 1))
+	// 	{
+	// 		if((*head)->moves == move)
+	// 			break ;
+	// 		retate_a(head);
+			
+	// 		//continue ;
+	// 	}
+	// 	else
+	// 	{
+	// 		if((*head)->moves == move)
+	// 			break ;
+	// 		rretate_a(head);
+	// 	}
+	// }
+	// push_a(head, head2);
 }
