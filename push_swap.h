@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/04 20:51:08 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/05 17:34:31 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		count(t_list *l2, int i);
 void	get_first_step(t_list **head, t_list **head2, int ac);
 // node	*small_to_top(t_list **head);
 // node	*big_to_top(t_list **head);
+int		lst_chr(t_list **head, int index);
 int		scan_moves(t_list **head, int index);
 void	calc_move(t_list **head);
 void	sorting(node *s, node *b, t_list **head, t_list **head2);

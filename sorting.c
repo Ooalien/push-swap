@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:10:21 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/04 21:09:17 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/05 22:15:07 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,36 +158,23 @@ void	get_first_step(t_list **head, t_list **head2, int ac)
 // 	return (t);
 // }
 
-// char	scan_moves(node *s, node *b)
-// {
-// 	int	i;
-// 	int	j;
+int	lst_chr(t_list **head, int index)
+{
+	t_list	*l;
+	int		i;
 
-// 	if (s->j > s->y)
-// 	{
-// 		i = s->y;
-// 		s->s = "srr";
-// 	}
-// 	else
-// 	{
-// 		i = s->j;
-// 		s->s = "sr";
-// 	}
-// 	if (b->j > b->y)
-// 	{
-// 		j = b->y;
-// 		b->s = "brr";
-// 	}
-// 	else
-// 	{
-// 		j = b->j;
-// 		b->s = "br";
-// 	}
-// 	if ((i + 1) > j)
-// 		return ('b');
-// 	else
-// 		return ('s');
-// }
+	l = *head;
+	i = 500;
+	while (l->next != *head)
+	{
+		if ((l->index > index) && (l->index < i))
+			i = l->index;
+		l = l->next;
+	}
+	if ((l->index > index) && (l->index < i))
+		i = l->index;
+	return (i);
+}
 
 // void	sorting(node *s, node *b, t_list **head, t_list **head2)
 // {
@@ -301,7 +288,7 @@ int	select_pair(t_list **head, int index)
 	pos_list(head);
 	while (l->next != *head)
 	{
-		if(l->index == (index + 1))
+		if(l->index == index)
 			return (scan_moves(head, l->index));
 		l = l->next;
 	}
@@ -323,7 +310,9 @@ void	pos_list(t_list **head)
 	}
 	l->pos = i;
 }
-
+/*
+* kjkjk
+*/
 int	pick_move(t_list **head, t_list **head2)
 {
 	t_list	*l;
@@ -332,17 +321,18 @@ int	pick_move(t_list **head, t_list **head2)
 	l = *head2;
 	r = ft_lstsize(head2, *head2);
 	pos_list(head2);
+	//printf("%d\n",select_pair(head, lst_chr(head, l->index)));
 	while (l->next != *head2)
 	{
-		l->sum = scan_moves(head2, l->index) + select_pair(head, l->index);
+		l->sum = scan_moves(head2, l->index) + select_pair(head, lst_chr(head, l->index));
 		l = l->next;
 	}
-	l->sum = scan_moves(head, l->index) + select_pair(head2, l->index);
+	l->sum = scan_moves(head2, l->index) + select_pair(head, lst_chr(head, l->index));
 	l = l->next;
 	while (l->next != *head2)
 	{
 		if (l->sum < r)
-			r = l->pos;
+			r = l->sum;
 		l = l->next;
 	}
 	return (r);
@@ -357,36 +347,35 @@ void	final_step(t_list **head, t_list **head2)
 	{
 		if (move <= ((ft_lstsize(head2, *head2) / 2) + 1))
 		{
-			if((*head2)->pos == move)
+			if((*head2)->sum == move)
 				break ;
 			retate_b(head2);
 			//continue ;
 		}
 		else
 		{
-			if((*head2)->pos == move)
+			if((*head2)->sum == move)
 				break ;
 			rretate_b(head2);
 		}
 	}
-	// move = scan_moves(head, );
-	// printf("select pair = %d\n", move);
-	// while (1)
-	// {
-	// 	if (move <= ((ft_lstsize(head, *head) / 2) + 1))
-	// 	{
-	// 		if((*head)->moves == move)
-	// 			break ;
-	// 		retate_a(head);
-			
-	// 		//continue ;
-	// 	}
-	// 	else
-	// 	{
-	// 		if((*head)->moves == move)
-	// 			break ;
-	// 		rretate_a(head);
-	// 	}
-	// }
-	// push_a(head, head2);
+	//printf("head a  = %d\n", (*head)->i);
+	move = lst_chr(head, (*head2)->index);
+	printf("close move  = %d\n", move);
+	while (1)
+	{
+		if (scan_moves(head, move) <= ((ft_lstsize(head, *head) / 2) + 1))
+		{
+			if ((*head)->index == move)
+				break ;
+			retate_a(head);
+		}
+		else
+		{
+			if( (*head)->index == move)
+				break ;
+			rretate_a(head);
+		}	
+	}
+	push_a(head, head2);
 }
