@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:16:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/05 22:16:01 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/07 21:14:36 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,76 +47,31 @@ int	main(int ac, char **av)
 			ft_lstadd_back(&head, ft_atoi(av[i]));
 			i++;
 		}
-		//mark_index(&head, l);
 		int i = 0;
-		//swap_a(&head, l);
-		// printf("%d\n", ft_lstlast(&head, l)->i);
-		// printf("**************************\n");
 		t_list	*head2 = NULL;
-		
-		//push_b(&head, head2, l);
-		printlst(&head, head);
-		//printf("******************\n");
-		 //printf("%d\n", ft_lstlast(&head, l));
-		// push_b(&head, &head2);
-		// push_b(&head, &head2);
-		// push_b(&head, &head2);
-		// push_a(&head, &head2);
-		// push_a(&head, &head2);
-		// push_a(&head, &head2);
-		//retate_a(&head);
-
-		// rretate_b(&head2);
-		
-		//push_a(&head, &head2);
-		//rretate_b(&head2);
-		//printf("%d\n", (*head2)->i);
-		// printf("********testaat**********\n");
-		// ft_lstadd_front(&head2, 8);
-		// ft_lstadd_front(&head2, 5);
-		// ft_lstadd_front(&head2, 9);
+		//printlst(&head, head);
 		indexing(&head);
 		get_first_step(&head, &head2, ac - 2);
-		printf("**********l2********\n");
-		printlst(&head2, head2);
-		
-		//printf("last node; %d\n", ft_lstlast(&head2,head2)->i);
-		printf("*********l1*********\n");
-		printlst(&head, head);
-		// printf("********* check *********\n");
-		//s = small_to_top(&head2);
-		// printf("********* check *********\n");
-		//b = big_to_top(&head2);
-		//scan_moves(s, b);
-		//sorting(s,b,&head,&head2);
-		printf("******************\n");
-		// printlst(&head2, head2);
-		calc_move(&head2);
-		pick_move(&head, &head2);
-		//printlst(&head2, head2);
-		//printf("5 moves = %d  ||   next to 5 moves = %d\n", scan_moves(&head2, 5), select_pair(&head,5));
+		//pick_move(&head, &head2);
+		while (ft_lstsize(&head2, head2) != 1)
+		{
+			final_step(&head, &head2);
+		}
 		final_step(&head,&head2);
-		printf("*********l1*********\n");
-		printlst(&head, head);
-		printf("**********l2********\n");
-		printlst(&head2, head2);
-		
-		final_step(&head,&head2);
-		printf("*********l1*********\n");
-		printlst(&head, head);
-		printf("**********l2********\n");
-		printlst(&head2, head2);
-		final_step(&head,&head2);
-		final_step(&head,&head2);
-		final_step(&head,&head2);
-		final_step(&head,&head2);
-		final_step(&head,&head2);
-		final_step(&head,&head2);
+		small_top(&head);
+
 		//final_step(&head,&head2);
-		printf("*********l1*********\n");
-		printlst(&head, head);
-		printf("**********l2********\n");
-		printlst(&head2, head2);
+		// printf("*********l1*********\n");
+		// printlst(&head, head);
+		// printf("**********l2********\n");
+		// printlst(&head2, head2);
+		//final_step(&head,&head2);
+		//final_step(&head,&head2);
+		// final_step(&head,&head2);
+		// final_step(&head,&head2);
+		// final_step(&head,&head2);
+		// final_step(&head,&head2);
+		//final_step(&head,&head2);
 		// printf("last move = %d\n", scan_moves(&head2, 2));
 		// printf("last move = %d\n", scan_moves(&head2, 3));
 		//  printf("*********l1*********\n");
@@ -128,7 +83,7 @@ int	main(int ac, char **av)
 		// }
 		// printf("%d\n", (*head2)->i);
 	}
-	//system("leaks a.out");
+	system("leaks a.out");
 	//printf("%d\n", ft_lstlast(&head, l)->i);
 	//printf("%d\n", ft_lstsize(&l, l));
 	//printf("%d\n", head->i);

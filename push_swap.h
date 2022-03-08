@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/05 17:34:31 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/07 20:13:40 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,8 @@ int		select_pair(t_list **head, int index);
 int		pick_move(t_list **head, t_list **head2);
 void	final_step(t_list **head, t_list **head2);
 void	pos_list(t_list **head);
+void	small_top(t_list **head);
+int		pos_nod(t_list **head, int index);
+int		pos_nod_utils(t_list **head, int sum);
 
 #endif
