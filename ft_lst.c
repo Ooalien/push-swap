@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:58:33 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/07 21:19:04 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/09 23:06:38 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	dellst(t_list *l)
 	t_list	*temp;
 
 	i = l->i;
-	l = temp;
+	temp = l;
 	while (l->next->i != i)
 	{
 		l = l->next;

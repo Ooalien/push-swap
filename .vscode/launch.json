@@ -8,8 +8,8 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "/Users/abayar/Desktop/ps/a.out",
-            "args": ["3", "8", "0"],
+            "program": "/Users/abayar/Desktop/push-swap/push-swap/a.out",
+            "args": ["3", "8", "0", "7", "1"],
             "cwd": "${workspaceFolder}"
         }
     ]
