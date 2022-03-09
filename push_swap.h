@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/07 20:13:40 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/09 21:04:09 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	dellst(t_list *l);
 void    indexing(t_list **head);
 int		count(t_list *l2, int i);
 void	get_first_step(t_list **head, t_list **head2, int ac);
-// node	*small_to_top(t_list **head);
-// node	*big_to_top(t_list **head);
 int		lst_chr(t_list **head, int index);
 int		scan_moves(t_list **head, int index);
 void	calc_move(t_list **head);
@@ -68,5 +66,13 @@ void	pos_list(t_list **head);
 void	small_top(t_list **head);
 int		pos_nod(t_list **head, int index);
 int		pos_nod_utils(t_list **head, int sum);
+void	three_numbers(t_list **head);
+void	for_numbers(t_list **head, t_list **head2);
+void	five_numbers(t_list **head, t_list **head2);
+int		check_args(char **av);
+int		is_num(char *s);
+int		check_rep(char **av);
+int		ft_strcmp(char *s1,char *s2);
+void	two_numbers(t_list **h);
 
 #endif

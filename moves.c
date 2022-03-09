@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 23:03:48 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/06 17:26:33 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/09 17:19:52 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void    swap_a(t_list **head, t_list *l)
 	temp = l->i;
 	l->i = l->next->i;
 	l->next->i = temp;
+	write(1, "sa\n", 3);
 }
 
 void    push_b(t_list **head, t_list **head2)
@@ -36,9 +37,11 @@ void    push_a(t_list **head, t_list **head2)
 	if (ft_lstlast(head2, (*head2)) == (*head2))
 		dellst(ft_lstlast(head2, (*head2)));
 	else
+	{
 		*head2 = ft_lstlast(head2, *head2)->next->next;
+		dellst(ft_lstlast(head2, (*head2)));
+	}
 	//ft_lstlast(head2, *head2)->next = *head2;
-	dellst(ft_lstlast(head2, (*head2)));
 	write(1, "pa\n", 3);
 }
 

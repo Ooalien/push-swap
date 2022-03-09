@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:10:21 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/07 20:13:59 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/09 20:03:12 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,89 +75,6 @@ void	get_first_step(t_list **head, t_list **head2, int ac)
 	}
 }
 
-// node	*small_to_top(t_list **head)
-// {
-// 	int		i;
-// 	node	*t;
-// 	t_list	*l;
-// 	t_list	*l2;
-
-// 	t->j = 0;
-// 	t->y = 0;
-// 	l = *head;
-// 	l2 = *head;
-// 	i = ft_lstsize(head, *head);
-// 	//printf("%d\n", ft_lstsize(head, *head));
-// 	while (l->next != (*head))
-// 	{
-// 		if (l->index < i)
-// 			i = l->index;
-// 		l = l->next;
-// 	}
-// 	if (l->index < i)
-// 		i = l->index;
-// 	l = l->next;
-// 	printf ("%d\n", i);
-// 	while (1)
-// 	{
-// 		retate_b(&l);
-// 		t->j++;
-// 		if (l->index == i)
-// 			break;
-// 	}
-// 	//printf("%d    %d\n", (*head)->i, i);
-// 	while (1)
-// 	{
-// 		rretate_b(&l2);
-// 		t->y++;
-// 		if (l2->index == i)
-// 			break;
-// 	}
-// 	printf("%d    %d\n",t->j,t->y);
-// 	return (t);
-// }
-
-// node	*big_to_top(t_list **head)
-// {
-// 	int		i;
-// 	node	*t;
-// 	t_list	*l;
-
-// 	t->j = 0;
-// 	t->y = 0;
-// 	l = *head;
-// 	i = 0;
-// 	//printf("%d\n",(*head)->i);
-// 	while (l->next != (*head))
-// 	{
-// 		if (l->index > i)
-// 			i = l->index;
-// 		l = l->next;
-// 	}
-// 	if (l->index > i)
-// 		i = l->index;
-// 	l = l->next;
-// 	printf ("%d\n", i);
-// 	printf("%d    %d\n", (*head)->i, i);
-// 	while (1)
-// 	{
-// 		retate_b(&l);
-// 		t->j++;
-// 		if (l->index == i)
-// 			break;
-// 	}
-// 	//printf("%d    %d\n", (*head)->i, i);
-// 	while (1)
-// 	{
-// 		rretate_b(head);
-// 		t->y++;
-// 		if ((*head)->index == i)
-// 			break;
-// 	}
-// 	printf("%d    %d\n",t->j,t->y);
-// 	return (t);
-// }
-
 int	lst_chr(t_list **head, int index)
 {
 	t_list	*l;
@@ -175,54 +92,6 @@ int	lst_chr(t_list **head, int index)
 		i = l->index;
 	return (i);
 }
-
-// void	sorting(node *s, node *b, t_list **head, t_list **head2)
-// {
-// 	char	c;
-
-// 	c = scan_moves(s, b);
-// 	if (c == 's')
-// 	{
-// 		if (s->s[2] == '\0')
-// 		{
-// 			while (s->j > 0)
-// 			{
-// 				retate_b(head2);
-// 				s->j--;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			while (s->y > 0)
-// 			{
-// 				rretate_b(head2);
-// 				s->y--;
-// 			}
-// 		}
-// 		push_a(head, head2);
-// 		retate_b(head2);
-// 	}
-// 	else
-// 	{
-// 		if (b->s[2] == '\0')
-// 		{
-// 			while (b->j > 0)
-// 			{
-// 				retate_b(head2);
-// 				b->j--;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			while (b->y > 0)
-// 			{
-// 				rretate_b(head2);
-// 				b->y--;
-// 			}
-// 		}
-// 		push_a(head, head2);
-// 	}
-// }
 
 int	scan_moves(t_list **head, int index)
 {
