@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug",
             "program": "/Users/abayar/Desktop/ps/a.out",
-            "args": ["3", "8", "0"],
+            "args": ["1", "0", "-888"],
             "cwd": "${workspaceFolder}"
         }
     ]

@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   markeup.c                                          :+:      :+:    :+:   */
+/*   moves_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 18:57:42 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/18 19:15:33 by abayar           ###   ########.fr       */
+/*   Created: 2022/03/10 17:45:23 by abayar            #+#    #+#             */
+/*   Updated: 2022/03/10 17:45:49 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	mark_index(t_list **head, t_list *l)
+void	rretate_a(t_list **head)
 {
-	int	i;
+	*head = ft_lstlast(head, *head);
+	write(1, "rra\n", 4);
+}
 
-	i = ft_lstsize(head,*head);
-	
-	while(l->next != *head)
-		{
-			printf("%d\n", l->i);
-			l = l->next;
-		}
-	// head = &(*head)->next;
-	//printf("%d\n", (*head)->i);
+void	retate_b(t_list **head)
+{
+	*head = (*head)->next;
+	write(1, "rb\n", 3);
+}
+
+void	rretate_b(t_list **head)
+{
+	*head = ft_lstlast(head, *head);
+	write(1, "rrb\n", 4);
+}
+
+void	retate(t_list **head)
+{
+	*head = (*head)->next;
+}
+
+void	rretate(t_list **head)
+{
+	*head = ft_lstlast(head, *head);
 }

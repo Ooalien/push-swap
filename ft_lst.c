@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:58:33 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/07 21:19:04 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/14 15:02:27 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	ft_lstadd_back(t_list **alst, int data)
 
 void	ft_lstadd_front(t_list **alst, int data, int index)
 {
-	t_list	*temp;
-	t_list	*new = ft_lstnew(data);
-	
+	t_list	*new;
+
+	new = ft_lstnew(data);
 	new->index = index;
 	if (!(*alst))
 	{
@@ -80,36 +80,7 @@ void	ft_lstadd_front(t_list **alst, int data, int index)
 		new->next = new;
 		return ;
 	}
-		//return ;
-	//new->next = *alst;
-	//printf("%d\n", ft_lstlast(alst, *alst)->i);
 	ft_lstlast(alst, *alst)->next = new;
 	new->next = *alst;
 	*alst = new;
-	//printlst(alst, *alst);
-}
-
-void	dellst(t_list *l)
-{
-	int	i;
-	t_list	*temp;
-
-	i = l->i;
-	l = temp;
-	while (l->next->i != i)
-	{
-		l = l->next;
-	}
-	if (l->next->i != l->i)
-		l->next = l->next->next;
-	else
-	{
-		//l->i = NULL;
-		l = NULL;
-		free(l);
-	}
-	temp = NULL;
-	free(temp);
-	
-	//l->i = NULL;
 }

@@ -6,15 +6,15 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 23:03:48 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/09 17:19:52 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/14 15:04:47 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    swap_a(t_list **head, t_list *l)
+void	swap_a(t_list *l)
 {
-	int temp;
+	int	temp;
 
 	temp = l->i;
 	l->i = l->next->i;
@@ -22,7 +22,7 @@ void    swap_a(t_list **head, t_list *l)
 	write(1, "sa\n", 3);
 }
 
-void    push_b(t_list **head, t_list **head2)
+void	push_b(t_list **head, t_list **head2)
 {
 	ft_lstadd_front(head2, (*head)->i, (*head)->index);
 	*head = ft_lstlast(head, *head)->next->next;
@@ -31,7 +31,7 @@ void    push_b(t_list **head, t_list **head2)
 	write(1, "pb\n", 3);
 }
 
-void    push_a(t_list **head, t_list **head2)
+void	push_a(t_list **head, t_list **head2)
 {
 	ft_lstadd_front(head, (*head2)->i, (*head2)->index);
 	if (ft_lstlast(head2, (*head2)) == (*head2))
@@ -41,7 +41,6 @@ void    push_a(t_list **head, t_list **head2)
 		*head2 = ft_lstlast(head2, *head2)->next->next;
 		dellst(ft_lstlast(head2, (*head2)));
 	}
-	//ft_lstlast(head2, *head2)->next = *head2;
 	write(1, "pa\n", 3);
 }
 
@@ -49,32 +48,4 @@ void	retate_a(t_list **head)
 {
 	*head = (*head)->next;
 	write(1, "ra\n", 3);
-}
-
-void	rretate_a(t_list **head)
-{
-	*head = ft_lstlast(head, *head);
-	write(1, "rra\n", 4);
-}
-
-void	retate_b(t_list **head)
-{
-	*head = (*head)->next;
-	write(1, "rb\n", 3);
-}
-
-void	rretate_b(t_list **head)
-{
-	*head = ft_lstlast(head, *head);
-	write(1, "rrb\n", 4);
-}
-
-void	retate(t_list **head)
-{
-	*head = (*head)->next;
-}
-
-void	rretate(t_list **head)
-{
-	*head = ft_lstlast(head, *head);
 }

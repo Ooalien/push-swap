@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:44:50 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/09 20:47:03 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/10 17:57:30 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 int	is_num(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
 	{
+		if (s[i] == '-' && i == 0)
+		{
+			i++;
+			continue ;
+		}
 		if (s[i] < '0' || s[i] > '9')
 			return (0);
 		i++;
@@ -43,7 +48,7 @@ int	check_args(char **av)
 	return (1);
 }
 
-int	ft_strcmp(char *s1,char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	size_t	i;
 
@@ -56,7 +61,6 @@ int	ft_strcmp(char *s1,char *s2)
 	}
 	return (0);
 }
-
 
 int	check_rep(char **av)
 {
