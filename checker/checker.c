@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:21:57 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/15 18:29:23 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/15 21:46:08 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,72 @@ int	is_sorted(t_list **head, t_list **head2)
 	return (1);
 }
 
-void	do_moves(t_list **head, t_list **head2, char *s)
+char	*is_move(char *s)
 {
 	if (ft_strcmp(s, "sa\n") == 0)
-		swap_a(*head);
+		return (s);
 	else if (ft_strcmp(s, "sb\n") == 0)
-		swap_a(*head2);
+		return (s);
 	else if (ft_strcmp(s, "ra\n") == 0)
-		retate_a(head);
+		return (s);
 	else if (ft_strcmp(s, "rb\n") == 0)
-		retate_b(head2);
+		return (s);
 	else if (ft_strcmp(s, "rra\n") == 0)
-		rretate_a(head);
+		return (s);
 	else if (ft_strcmp(s, "rrb\n") == 0)
-		rretate_b(head2);
+		return (s);
+	else if (ft_strcmp(s, "pa\n") == 0)
+		return (s);
+	else if (ft_strcmp(s, "pb\n") == 0)
+		return (s);
+	else if (ft_strcmp(s, "ss\n") == 0)
+		return (s);
+	else if (ft_strcmp(s, "rr\n") == 0)
+		return (s);
+	else if (ft_strcmp(s, "rrr\n") == 0)
+		return (s);
+	else
+	{
+		write(2, "Error\n", 6);
+		exit(0);
+	}
+	return (0);
+}
+
+void	do_moves(t_list **head, t_list **head2, char *s)
+{
+	if (!s)
+		return ;
+	if (ft_strcmp(s, "sa\n") == 0)
+		swap_aa(*head);
+	else if (ft_strcmp(s, "sb\n") == 0)
+		swap_aa(*head2);
+	else if (ft_strcmp(s, "ra\n") == 0)
+		retate_aa(head);
+	else if (ft_strcmp(s, "rb\n") == 0)
+		retate_bb(head2);
+	else if (ft_strcmp(s, "rra\n") == 0)
+		rretate_aa(head);
+	else if (ft_strcmp(s, "rrb\n") == 0)
+		rretate_bb(head2);
+	else if (ft_strcmp(s, "pa\n") == 0)
+		push_aa(head, head2);
+	else if (ft_strcmp(s, "pb\n") == 0)
+		push_bb(head, head2);
 	else if (ft_strcmp(s, "ss\n") == 0)
 	{
-		swap_a(*head);
-		swap_a(*head2);
+		swap_aa(*head);
+		swap_aa(*head2);
 	}
 	else if (ft_strcmp(s, "rr\n") == 0)
 	{
-		retate_a(head);
-		retate_b(head2);
+		retate_aa(head);
+		retate_bb(head2);
 	}
 	else if (ft_strcmp(s, "rrr\n") == 0)
 	{
-		rretate_a(head);
-		rretate_b(head2);
+		rretate_aa(head);
+		rretate_bb(head2);
 	}
 }
 
@@ -94,15 +132,15 @@ int main(int ac, char **av)
 		//printls(&head, head);
 		while (1)
 		{
-			if (is_sorted(&head, &head2) == 1)// && ft_lstsize(&head, head) == ac - 1)
+			if (is_sorted(&head, &head2) == 1 && ft_lstsize(&head, head) == ac - 1)
 			{
 				write(1, "OK\n", 3);
 				return (0);
 			}
 			//printf("%s\n", get_next_line(0));
-			do_moves(&head, &head2, get_next_line(0));
+			do_moves(&head, &head2, is_move(get_next_line(0)));
 			//printls(&head, head);
 		}
 	}
-	//system("leaks a.out");
+	system("leaks a.out");
 }

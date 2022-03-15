@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/14 15:04:58 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/15 21:25:06 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,13 @@ int		ft_strcmp(char *s1, char *s2);
 void	two_numbers(t_list **h);
 void	small_top_utils(t_list **head, int p);
 void	pick_utils(t_list **head, t_list **head2);
+void	rretate_aa(t_list **head);
+void	retate_bb(t_list **head);
+void	rretate_bb(t_list **head);
+void	swap_aa(t_list *l);
+void	push_bb(t_list **head, t_list **head2);
+void	push_aa(t_list **head, t_list **head2);
+void	retate_aa(t_list **head);
+
 
 #endif
