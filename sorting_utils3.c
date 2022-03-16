@@ -6,13 +6,13 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:55:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/14 15:03:15 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/16 17:53:49 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	scan_utils(t_list **head, int i, int j, int y)
+void	scan_utils(t_list **head, int i, int *j, int *y)
 {
 	t_list	*l2;
 
@@ -22,16 +22,16 @@ void	scan_utils(t_list **head, int i, int j, int y)
 		if (l2->i == i)
 			break ;
 		retate(&l2);
-		j++;
+		(*j)++;
 	}
 	l2 = *head;
-	y = 0;
+	*y = 0;
 	while (1)
 	{
 		if (l2->i == i)
 			break ;
 		rretate(&l2);
-		y++;
+		(*y)++;
 	}
 }
 
@@ -55,7 +55,7 @@ int	scan_moves(t_list **head, int index)
 		l = l->next;
 	}
 	i = l->i;
-	scan_utils(head, i, j, y);
+	scan_utils(head, i, &j, &y);
 	if (y < j)
 		return (y);
 	return (j);
