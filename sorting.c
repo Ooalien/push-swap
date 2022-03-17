@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:10:21 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/14 14:56:14 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/17 00:20:11 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,72 @@ int	pick_move(t_list **head, t_list **head2)
 	return (r);
 }
 
-void	final_step_utils(t_list **head, int move, int i)
+void	print_opti_utils(t_node *n)
 {
+	while (n->rra > 0 || n->rrb > 0)
+	{
+		if (n->rra > 0 && n->rrb > 0)
+		{
+			write(1, "rrr\n", 4);
+			n->rra--;
+			n->rrb--;
+		}
+		else if (n->rra > 0)
+		{
+			write(1, "rra\n", 4);
+			n->rra--;
+		}
+		else if (n->rrb > 0)
+		{
+			write(1, "rrb\n", 4);
+			n->rrb--;
+		}
+	}
+}
+
+void	print_opti(t_node *n)
+{
+	while (n->ra > 0 || n->rb > 0)
+	{
+		if (n->ra > 0 && n->rb > 0)
+		{
+			write(1, "rr\n", 3);
+			n->ra--;
+			n->rb--;
+		}
+		else if (n->ra > 0)
+		{
+			write(1, "ra\n", 3);
+			n->ra--;
+		}
+		else if (n->rb > 0)
+		{
+			write(1, "rb\n", 3);
+			n->rb--;
+		}
+	}
+	print_opti_utils(n);
+}
+
+void	final_step_utils(t_list **head, int move, int i, t_node *n)
+{
+	n->rra = 0;
+	n->ra = 0;
 	while (1)
 	{
 		if (i <= ((ft_lstsize(head, *head) / 2) + 1))
 		{
 			if ((*head)->index == move)
 				break ;
-			retate_a(head);
+			retate(head);
+			n->ra++;
 		}
 		else
 		{
 			if ((*head)->index == move)
 				break ;
-			rretate_a(head);
+			rretate(head);
+			n->rra++;
 		}	
 	}
 }
@@ -79,26 +130,32 @@ void	final_step(t_list **head, t_list **head2)
 {
 	int	move;
 	int	i;
+	t_node	n;
 
 	move = pick_move(head, head2);
 	i = pos_nod_utils(head2, move);
+	n.rrb = 0;
+	n.rb = 0;
 	while (1)
 	{
 		if (i <= ((ft_lstsize(head2, *head2) / 2) + 1))
 		{
 			if ((*head2)->sum == move)
 				break ;
-			retate_b(head2);
+			retate(head2);
+			n.rb++;
 		}
 		else
 		{
 			if ((*head2)->sum == move)
 				break ;
-			rretate_b(head2);
+			rretate(head2);
+			n.rrb++;
 		}
 	}
 	move = lst_chr(head, (*head2)->index);
 	i = pos_nod(head, move);
-	final_step_utils(head, move, i);
+	final_step_utils(head, move, i, &n);
+	print_opti(&n);
 	push_a(head, head2);
 }

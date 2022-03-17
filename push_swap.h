@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/15 21:25:06 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/16 23:54:25 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef struct s_list
 	int				moves;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_node
+{
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+}	t_node;
 
 void	ft_lstadd_back(t_list **alst, int data);
 void	ft_lstadd_front(t_list **alst, int data, int index);

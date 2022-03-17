@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:21:57 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/16 17:33:19 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/17 00:52:08 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int main(int ac, char **av)
 	int		i;
 	t_list	*head2;
 
-	c = ac - 1;˚
+	c = ac - 1;
 	i = 2;
 	head2 = NULL;
 	head = NULL;
