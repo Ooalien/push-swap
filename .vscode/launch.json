@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug",
             "program": "/Users/abayar/Desktop/push-swap/push_swap",
-            "args": ["", "137", "189"],
+            "args": ["1285", "137", "189", "12", "655", "097"],
             "cwd": "${workspaceFolder}"
         }
     ]

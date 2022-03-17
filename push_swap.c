@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:16:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/15 21:34:20 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/17 21:44:55 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ void	hard_code(t_list **head, t_list **head2, int i)
 		for_numbers(head, head2);
 	else if (i == 5)
 		five_numbers(head, head2);
+}
+
+int	is_sorted(t_list **head)
+{
+	t_list	*l;
+
+	l = *head;
+	while (l->next != *head)
+	{
+		if (l->i > l->next->i)
+			return (0);
+		l = l->next;
+	}
+	return (1);
 }
 
 void	push_swap(t_list **head, t_list **head2, int ac)
@@ -57,6 +71,8 @@ int	main(int ac, char **av)
 			ft_lstadd_back(&head, ft_atoi(av[i]));
 			i++;
 		}
+		if (is_sorted(&head) == 1)
+			return (0);
 		i = ft_lstsize(&head, head);
 		indexing(&head);
 		if (i <= 5)
@@ -66,6 +82,6 @@ int	main(int ac, char **av)
 		}
 		push_swap(&head, &head2, ac);
 	}
-	//system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

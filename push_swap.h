@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/16 23:54:25 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/17 21:04:05 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ void	swap_aa(t_list *l);
 void	push_bb(t_list **head, t_list **head2);
 void	push_aa(t_list **head, t_list **head2);
 void	retate_aa(t_list **head);
-
 
 #endif

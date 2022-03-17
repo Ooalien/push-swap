@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:21:57 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/17 00:52:08 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/17 21:42:22 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	printls(t_list **head, t_list *l)
 	printf("%d\n", l->i);
 }
 
-int	is_sorted(t_list **head, t_list **head2)
+int	is_sorted(t_list **head)
 {
 	t_list	*l;
 
@@ -39,6 +39,8 @@ int	is_sorted(t_list **head, t_list **head2)
 
 char	*is_move(char *s)
 {
+	if (!s)
+		return (0);
 	if (ft_strcmp(s, "sa\n") == 0)
 		return (s);
 	else if (ft_strcmp(s, "sb\n") == 0)
@@ -113,7 +115,9 @@ int main(int ac, char **av)
 	int		c;
 	int		i;
 	t_list	*head2;
+	char	*s, *temp;
 
+	s = NULL;
 	c = ac - 1;
 	i = 2;
 	head2 = NULL;
@@ -129,18 +133,28 @@ int main(int ac, char **av)
 			ft_lstadd_back(&head, ft_atoi(av[i]));
 			i++;
 		}
-		//printls(&head, head);
-		while (1)
+		while ((s = get_next_line(0)) != NULL)
 		{
-			if (is_sorted(&head, &head2) == 1 && ft_lstsize(&head, head) == ac - 1)
+			if (is_sorted(&head) == 1 && ft_lstsize(&head, head) == ac - 1)
 			{
 				write(1, "OK\n", 3);
+				free(s);
 				return (0);
 			}
-			//printf("%s\n", get_next_line(0));
-			do_moves(&head, &head2, is_move(get_next_line(0)));
-			//printls(&head, head);
+			temp = s;
+			s = is_move(s);
+			free(temp);
+			do_moves(&head, &head2, is_move(s));
+			if (is_sorted(&head) == 1 && ft_lstsize(&head, head) == ac - 1)
+			{
+				write(1, "OK\n", 3);
+				free(s);
+				return (0);
+			}
 		}
+		write(1, "KO\n", 3);
 	}
+	free(s);
 	system("leaks a.out");
+	return (0);
 }
