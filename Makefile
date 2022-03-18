@@ -6,7 +6,7 @@
 #    By: abayar <abayar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 12:58:10 by abayar            #+#    #+#              #
-#    Updated: 2022/03/17 21:04:22 by abayar           ###   ########.fr        #
+#    Updated: 2022/03/18 20:41:10 by abayar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,20 @@ NAME = push_swap.a
 
 NAMEB = checker.a
 
-FLAGS = gcc -Wall -Wextra -Werror
+FLAGS = gcc -Wall -Wextra -Werror -g
 
 all		: ${NAME}
 
-bonus	: ${OBJB}
+bonus	: ${NAMEB}
 
 ${NAME}	: ${OBJ}
 
 %.o		: %.c
 	${FLAGS} -c $< -o $@
 	ar rc ${NAME} $@
+
+${NAMEB} :
+	${FLAGS} ${SRCB}
 
 exec	:
 	${FLAGS} ${NAME} ${SRC} -o push_swap

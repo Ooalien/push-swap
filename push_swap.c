@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:16:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/17 21:44:55 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/18 20:39:10 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ int	main(int ac, char **av)
 		}
 		push_swap(&head, &head2, ac);
 	}
-	system("leaks push_swap");
+	//system("leaks push_swap");
 	return (0);
 }

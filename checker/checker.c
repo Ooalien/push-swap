@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:21:57 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/17 21:42:22 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/18 20:55:42 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int main(int ac, char **av)
 	int		c;
 	int		i;
 	t_list	*head2;
-	char	*s, *temp;
+	char	*s;
 
 	s = NULL;
 	c = ac - 1;
@@ -135,24 +135,13 @@ int main(int ac, char **av)
 		}
 		while ((s = get_next_line(0)) != NULL)
 		{
-			if (is_sorted(&head) == 1 && ft_lstsize(&head, head) == ac - 1)
-			{
-				write(1, "OK\n", 3);
-				free(s);
-				return (0);
-			}
-			temp = s;
-			s = is_move(s);
-			free(temp);
 			do_moves(&head, &head2, is_move(s));
-			if (is_sorted(&head) == 1 && ft_lstsize(&head, head) == ac - 1)
-			{
-				write(1, "OK\n", 3);
-				free(s);
-				return (0);
-			}
+			free(s);
 		}
-		write(1, "KO\n", 3);
+		if (is_sorted(&head) == 1 && ft_lstsize(&head, head) == ac - 1)
+			write(1, "OK\n", 3);
+		else
+			write(1, "KO\n", 3);
 	}
 	free(s);
 	system("leaks a.out");
