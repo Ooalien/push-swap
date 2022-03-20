@@ -6,19 +6,20 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:26:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/02/14 20:14:57 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:39:54 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long long	checker(unsigned long long n, int signe)
+static long long	checker(long long n)
 {
-	if (n <= 9223372036854775807)
-		return (n * signe);
-	if (signe < 0)
-		return (0);
-	return (-1);
+	if (n > 2147483647 || n < -2147483648)
+	{
+		write(2, "Error\n", 6);
+		exit(0);
+	}
+	return (n);
 }
 
 int	ft_atoi(const char *str)
@@ -45,6 +46,6 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (str[i] - 48);
 		i++;
 	}
-	res = checker(res, signe);
+	res = checker(res * signe);
 	return (res);
 }

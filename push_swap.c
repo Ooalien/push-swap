@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:16:04 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/18 20:39:10 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:19:31 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ int	main(int ac, char **av)
 	i = 2;
 	head2 = NULL;
 	if (check_args(av) == 0 || check_rep(av) == 0)
+	{
+		write(2, "Error\n", 6);
 		return (0);
+	}
 	if (ac > 1)
 	{
 		l = ft_lstnew(ft_atoi(av[1]));
@@ -82,6 +85,6 @@ int	main(int ac, char **av)
 		}
 		push_swap(&head, &head2, ac);
 	}
-	//system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

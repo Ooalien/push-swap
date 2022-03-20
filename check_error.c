@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:44:50 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/17 15:16:03 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:39:50 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_args(char **av)
 	{
 		if (is_num(av[i]) == 0)
 		{
-			printf("Error\n");
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		i++;
@@ -75,9 +75,9 @@ int	check_rep(char **av)
 		j = 1;
 		while (j < i)
 		{
-			if (ft_strcmp(av[i], av[j]) == 0)
+			if (ft_strcmp(av[i], av[j]) == 0 || ft_atoi(av[i]) == ft_atoi(av[j]))
 			{
-				printf("Error\n");
+				write(2, "Error\n", 6);
 				return (0);
 			}
 			j++;

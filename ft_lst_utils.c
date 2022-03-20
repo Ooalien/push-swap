@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:57:05 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/17 21:44:45 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/19 16:27:04 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ void	dellst(t_list *l)
 		l = l->next;
 	}
 	if (l->next->i != l->i)
+	{
+		temp = l->next;
 		l->next = l->next->next;
+		free(temp);
+		temp = NULL;
+	}
 	else
 	{
-		l = NULL;
 		free(l);
+		l = NULL;
+		return ;
 	}
-	free(temp);
-	temp = NULL;
 }

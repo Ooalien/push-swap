@@ -6,22 +6,22 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:21:57 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/18 20:55:42 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:40:08 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "get_next_line.h"
 
-void	printls(t_list **head, t_list *l)
-{
-	while (l->next != (*head))
-	{
-		printf("%d\n", l->i);
-		l = l->next;
-	}
-	printf("%d\n", l->i);
-}
+// void	printls(t_list **head, t_list *l)
+// {
+// 	while (l->next != (*head))
+// 	{
+// 		printf("%d\n", l->i);
+// 		l = l->next;
+// 	}
+// 	printf("%d\n", l->i);
+// }
 
 int	is_sorted(t_list **head)
 {
@@ -137,13 +137,15 @@ int main(int ac, char **av)
 		{
 			do_moves(&head, &head2, is_move(s));
 			free(s);
+			s = NULL;
 		}
 		if (is_sorted(&head) == 1 && ft_lstsize(&head, head) == ac - 1)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
 	}
-	free(s);
-	system("leaks a.out");
+	if (s)
+		free(s);
+	system("leaks checker");
 	return (0);
 }
