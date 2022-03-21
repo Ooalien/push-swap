@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 21:11:52 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/19 21:12:31 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/21 15:05:00 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	swap_aa(t_list *l)
 {
-	if (!l)
-		return ;
 	int	temp;
 
+	if (!l)
+		return ;
 	temp = l->i;
 	l->i = l->next->i;
 	l->next->i = temp;
@@ -25,16 +25,17 @@ void	swap_aa(t_list *l)
 
 void	push_bb(t_list **head, t_list **head2)
 {
-	t_list *tmp = *head;
-	t_list *last_a;
-	t_list *last_b;
+	t_list	*tmp;
+	t_list	*last_a;
+	t_list	*last_b;
+
+	tmp = *head;
 	if (!(*head))
 		return ;
-	
 	last_a = ft_lstlast(head, (*head));
 	last_a->next = tmp->next;
 	*head = tmp->next;
-	if(!(*head2))
+	if (!(*head2))
 	{
 		(*head2) = tmp;
 		tmp->next = tmp;
@@ -48,15 +49,17 @@ void	push_bb(t_list **head, t_list **head2)
 
 void	push_aa(t_list **head, t_list **head2)
 {	
-	t_list *tmp = *head2;
-	t_list *last_a;
-	t_list *last_b;
+	t_list	*tmp;
+	t_list	*last_a;
+	t_list	*last_b;
+
+	tmp = *head2;
 	if (!(*head2))
 		return ;
 	last_b = ft_lstlast(head2, (*head2));
 	last_b->next = tmp->next;
 	*head2 = tmp->next;
-	if(!(*head))
+	if (!(*head))
 	{
 		(*head) = tmp;
 		tmp->next = tmp;
@@ -70,5 +73,7 @@ void	push_aa(t_list **head, t_list **head2)
 
 void	retate_aa(t_list **head)
 {
+	if (!(*head))
+		return ;
 	*head = (*head)->next;
 }

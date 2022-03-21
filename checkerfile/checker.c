@@ -6,27 +6,19 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:21:57 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/19 21:40:08 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/21 15:49:45 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "get_next_line.h"
 
-// void	printls(t_list **head, t_list *l)
-// {
-// 	while (l->next != (*head))
-// 	{
-// 		printf("%d\n", l->i);
-// 		l = l->next;
-// 	}
-// 	printf("%d\n", l->i);
-// }
-
 int	is_sorted(t_list **head)
 {
 	t_list	*l;
 
+	if (!(*head))
+		return (0);
 	l = *head;
 	while (l->next != *head)
 	{
@@ -41,21 +33,15 @@ char	*is_move(char *s)
 {
 	if (!s)
 		return (0);
-	if (ft_strcmp(s, "sa\n") == 0)
+	if ((ft_strcmp(s, "sa\n") == 0) || (ft_strcmp(s, "sb\n") == 0))
 		return (s);
-	else if (ft_strcmp(s, "sb\n") == 0)
-		return (s);
-	else if (ft_strcmp(s, "ra\n") == 0)
-		return (s);
-	else if (ft_strcmp(s, "rb\n") == 0)
+	else if ((ft_strcmp(s, "ra\n") == 0) || (ft_strcmp(s, "rb\n") == 0))
 		return (s);
 	else if (ft_strcmp(s, "rra\n") == 0)
 		return (s);
 	else if (ft_strcmp(s, "rrb\n") == 0)
 		return (s);
-	else if (ft_strcmp(s, "pa\n") == 0)
-		return (s);
-	else if (ft_strcmp(s, "pb\n") == 0)
+	else if ((ft_strcmp(s, "pa\n") == 0) || (ft_strcmp(s, "pb\n") == 0))
 		return (s);
 	else if (ft_strcmp(s, "ss\n") == 0)
 		return (s);
@@ -71,81 +57,59 @@ char	*is_move(char *s)
 	return (0);
 }
 
-void	do_moves(t_list **head, t_list **head2, char *s)
+void	checker_utils(t_list **head, char **av, int c)
 {
-	if (!s)
-		return ;
-	if (ft_strcmp(s, "sa\n") == 0)
-		swap_aa(*head);
-	else if (ft_strcmp(s, "sb\n") == 0)
-		swap_aa(*head2);
-	else if (ft_strcmp(s, "ra\n") == 0)
-		retate_aa(head);
-	else if (ft_strcmp(s, "rb\n") == 0)
-		retate_bb(head2);
-	else if (ft_strcmp(s, "rra\n") == 0)
-		rretate_aa(head);
-	else if (ft_strcmp(s, "rrb\n") == 0)
-		rretate_bb(head2);
-	else if (ft_strcmp(s, "pa\n") == 0)
-		push_aa(head, head2);
-	else if (ft_strcmp(s, "pb\n") == 0)
-		push_bb(head, head2);
-	else if (ft_strcmp(s, "ss\n") == 0)
+	int	i;
+
+	i = 2;
+	while (i <= c)
 	{
-		swap_aa(*head);
-		swap_aa(*head2);
-	}
-	else if (ft_strcmp(s, "rr\n") == 0)
-	{
-		retate_aa(head);
-		retate_bb(head2);
-	}
-	else if (ft_strcmp(s, "rrr\n") == 0)
-	{
-		rretate_aa(head);
-		rretate_bb(head2);
+		ft_lstadd_back(head, ft_atoi(av[i]));
+		i++;
 	}
 }
 
-int main(int ac, char **av)
+void	checker(t_list **head, t_list **head2, char **av, int ac)
 {
-	t_list	*l;
-	t_list	*head;
 	int		c;
-	int		i;
-	t_list	*head2;
 	char	*s;
 
 	s = NULL;
 	c = ac - 1;
-	i = 2;
+	*head = ft_lstnew(ft_atoi(av[1]));
+	checker_utils(head, av, c);
+	s = get_next_line(0);
+	while (s != NULL)
+	{
+		do_moves(head, head2, is_move(s));
+		free(s);
+		s = NULL;
+		s = get_next_line(0);
+	}
+	if (is_sorted(head) == 1 && ft_lstsize(head, *head) == ac - 1)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	if (s)
+		free(s);
+}
+
+int	main(int ac, char **av)
+{
+	t_list	*head;
+	t_list	*head2;
+
 	head2 = NULL;
 	head = NULL;
 	if (check_args(av) == 0 || check_rep(av) == 0)
+	{
+		write(1, "Error\n", 6);
 		return (0);
+	}
 	if (ac > 1)
 	{
-		l = ft_lstnew(ft_atoi(av[1]));
-		head = l;
-		while (i <= c)
-		{
-			ft_lstadd_back(&head, ft_atoi(av[i]));
-			i++;
-		}
-		while ((s = get_next_line(0)) != NULL)
-		{
-			do_moves(&head, &head2, is_move(s));
-			free(s);
-			s = NULL;
-		}
-		if (is_sorted(&head) == 1 && ft_lstsize(&head, head) == ac - 1)
-			write(1, "OK\n", 3);
-		else
-			write(1, "KO\n", 3);
+		checker(&head, &head2, av, ac);
 	}
-	if (s)
-		free(s);
-	system("leaks checker");
+	//system("leaks checker");
 	return (0);
 }

@@ -6,13 +6,13 @@
 #    By: abayar <abayar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 12:58:10 by abayar            #+#    #+#              #
-#    Updated: 2022/03/19 20:59:33 by abayar           ###   ########.fr        #
+#    Updated: 2022/03/21 15:57:42 by abayar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = check_error.c ft_lst_utils.c sorting.c sorting_utils2.c ft_atoi.c moves.c sorting_numbers.c sorting_utils3.c ft_lst.c  moves_utils.c   sorting_utils.c  push_swap.c
+SRC = check_error.c ft_lst_utils.c sorting.c sorting_utils2.c ft_atoi.c moves.c sorting_numbers.c sorting_utils3.c ft_lst.c  moves_utils.c   sorting_utils.c  push_swap.c sorting_2.c
 
-SRCB = checkerfile/checker.c checkerfile/get_next_line.c checkerfile/get_next_line_utils.c checkerfile/move_checker.c checkerfile/move_checker_utils.c
+SRCB = checkerfile/checker.c checkerfile/get_next_line.c checkerfile/get_next_line_utils.c checkerfile/move_checker.c checkerfile/move_checker_utils.c checkerfile/checker_utils.c
 
 OBJB = ${SRCB:.c=.o}
 
@@ -49,5 +49,7 @@ clean	:
 fclean	: clean
 	rm -f ${NAME}
 	rm -f ${NAMEB}
+	rm -f push_swap
+	rm -f checker
 
 re		: fclean all

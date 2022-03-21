@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:15 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/19 21:16:40 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/21 15:10:38 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	printls(t_list **head, t_list *l);
 int		is_sorted(t_list **head);
 char	*is_move(char *s);
 void	do_moves(t_list **head, t_list **head2, char *s);
+void	print_opti(t_node *n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 21:13:05 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/15 21:23:49 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/21 14:33:39 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 void	rretate_aa(t_list **head)
 {
+	if (!(*head))
+		return ;
 	*head = ft_lstlast(head, *head);
 }
 
 void	retate_bb(t_list **head)
 {
+	if (!(*head))
+		return ;
 	*head = (*head)->next;
 }
 
 void	rretate_bb(t_list **head)
 {
+	if (!(*head))
+		return ;
 	*head = ft_lstlast(head, *head);
 }
 
