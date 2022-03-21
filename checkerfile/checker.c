@@ -6,7 +6,7 @@
 /*   By: abayar <abayar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:21:57 by abayar            #+#    #+#             */
-/*   Updated: 2022/03/21 15:49:45 by abayar           ###   ########.fr       */
+/*   Updated: 2022/03/21 19:04:45 by abayar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,5 @@ int	main(int ac, char **av)
 	{
 		checker(&head, &head2, av, ac);
 	}
-	//system("leaks checker");
 	return (0);
 }

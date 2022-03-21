@@ -6,7 +6,7 @@
 #    By: abayar <abayar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 12:58:10 by abayar            #+#    #+#              #
-#    Updated: 2022/03/21 15:57:42 by abayar           ###   ########.fr        #
+#    Updated: 2022/03/21 19:05:03 by abayar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME = push_swap.a
 
 NAMEB = checker.a
 
-FLAGS = gcc -Wall -Wextra -Werror -g
+FLAGS = gcc -Wall -Wextra -Werror
 
 all		: ${NAME}
 
